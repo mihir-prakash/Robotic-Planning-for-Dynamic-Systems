@@ -4,56 +4,107 @@
 // Authors: Mihir
 //////////////////////////////////////
 
-#ifndef RG_RRT_H
-#define RG_RRT_H
 
+
+#ifndef OMPL_CONTROL_PLANNERS_RGRRT_RGRRT_
+#define OMPL_CONTROL_PLANNERS_RGRRT_RGRRT_
+
+#include <ompl/geometric/planners/PlannerIncludes.h>
+#include <ompl/datastructures/NearestNeighbors.h>
 #include <ompl/control/SpaceInformation.h>
-#include <ompl/control/StatePropagator.h> 
-#include <ompl/base/Planner.h>
-#include <ompl/base/PlannerTerminationCondition.h>
-#include <ompl/base/goals/GoalSampleableRegion.h>
-#include <ompl/geometric/PathGeometric.h> 
-#include <ompl/base/StateSampler.h>
-#include <ompl/base/State.h> 
+#include <ompl/control/Control.h>
 #include <vector>
-#include <memory>
+#include <limits>
+#include <math.h>
 
 namespace ompl
 {
     namespace control
     {
-        class RGRRT : public ompl::base::Planner
+        class RGRRT : public base::Planner
         {
-        public:            
-            RGRRT(const ompl::control::SpaceInformationPtr &si);           
-            ~RGRRT() override;
-
-           
-            ompl::base::PlannerStatus solve(const ompl::base::PlannerTerminationCondition &ptc) override;            
-            void clear() override;            
-            void setup() override;            
-            void setRange(double range);            
-            double getRange() const;            
-            void setMaxReachableStates(unsigned int maxStates);            
-            unsigned int getMaxReachableStates() const;
-        protected:            
-            void freeMemory();
+        public:
+            RGRRT(const SpaceInformationPtr &si);
+            virtual ~RGRRT(void);
+            virtual base::PlannerStatus solve(const base::PlannerTerminationCondition &ptc);
+            virtual void clear(void);
             
-            double range_;            
-            unsigned int maxReachableStates_;            
-            std::shared_ptr<ompl::base::StateSampler> sampler_;
-            
-            struct Motion
+            void setGoalBias(double goalBias)
             {
-                ompl::base::State *state;
-                Motion *parent;
-                std::vector<ompl::base::State *> reachableSet;
-            };
-
+                goalBias_ = goalBias;
+            }
             
-            std::vector<Motion *> motions_;
-        };
-    } 
-} 
+            double getGoalBias(void) const
+            {
+                return goalBias_;
+            }
+            
+            bool getIntermediateStates(void) const
+            {
+                return addIntermediateStates_;
+            }
+            
+            void setIntermediateStates(bool addIntermediateStates)
+            {
+                addIntermediateStates_ = addIntermediateStates;
+            }
+            
+            virtual void getPlannerData(base::PlannerData &data) const;
+            
+            template<template<typename T> class NN>
+            void setNearestNeighbors(void)
+            {
+                nn_.reset(new NN<Motion*>());
+            }
+            
+            virtual void setup(void);
 
-#endif  RG_RRT_H
+        protected:
+            class Motion
+            {
+            public:
+                Motion(void) : state(NULL), control(NULL), steps(0), parent(NULL)
+                {
+                }
+                
+                Motion(const SpaceInformation *si) : state(si->allocState()), control(si->allocControl()), steps(0), parent(NULL)
+                {
+                }
+                
+                ~Motion(void)
+                {
+                }
+                
+                base::State       *state;
+                Control          *control;
+                unsigned int     steps;
+                Motion          *parent;
+                std::vector<Motion*> reachable;
+            };
+            
+            void freeMemory(void);
+            
+            double distanceFunction(const Motion* a, const Motion* b) const
+            {
+                return si_->distance(a->state, b->state);
+            }
+            
+            base::StateSamplerPtr sampler_;
+            DirectedControlSamplerPtr controlSampler_;
+            const SpaceInformation *siC_;
+            std::shared_ptr<NearestNeighbors<Motion *>> nn_;
+            double goalBias_;
+            bool addIntermediateStates_;
+            RNG rng_;
+            Motion *lastGoalMotion_;
+            
+            const int RSIZE = 15;
+            std::vector<double> control_offset;
+            
+            void setupReachableSet(Motion* const m);
+            int selectReachableMotion(const Motion* qnear, const Motion* qrand);
+        };
+    }
+}
+
+#endif
