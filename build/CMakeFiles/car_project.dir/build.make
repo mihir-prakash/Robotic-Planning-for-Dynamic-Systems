@@ -127,6 +127,10 @@ car_project: CMakeFiles/car_project.dir/src/Project4Car.cpp.o
 car_project: CMakeFiles/car_project.dir/src/CollisionChecking.cpp.o
 car_project: CMakeFiles/car_project.dir/src/RG-RRT.cpp.o
 car_project: CMakeFiles/car_project.dir/build.make
+car_project: /opt/anaconda3/lib/libboost_serialization.dylib
+car_project: /opt/anaconda3/lib/libboost_system.dylib
+car_project: /opt/anaconda3/lib/libboost_filesystem.dylib
+car_project: /opt/anaconda3/lib/libboost_atomic.dylib
 car_project: CMakeFiles/car_project.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mihirprakash/Desktop/project4_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable car_project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/car_project.dir/link.txt --verbose=$(VERBOSE)

@@ -117,48 +117,72 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named pendulum_project
+# Target rules for targets named car_project
 
 # Build rule for target.
-pendulum_project: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pendulum_project
-.PHONY : pendulum_project
+car_project: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 car_project
+.PHONY : car_project
 
 # fast build rule for target.
-pendulum_project/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pendulum_project.dir/build.make CMakeFiles/pendulum_project.dir/build
-.PHONY : pendulum_project/fast
+car_project/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/build
+.PHONY : car_project/fast
 
-src/Project4Pendulum.o: src/Project4Pendulum.cpp.o
-.PHONY : src/Project4Pendulum.o
+src/CollisionChecking.o: src/CollisionChecking.cpp.o
+.PHONY : src/CollisionChecking.o
 
 # target to build an object file
-src/Project4Pendulum.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pendulum_project.dir/build.make CMakeFiles/pendulum_project.dir/src/Project4Pendulum.cpp.o
-.PHONY : src/Project4Pendulum.cpp.o
+src/CollisionChecking.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/src/CollisionChecking.cpp.o
+.PHONY : src/CollisionChecking.cpp.o
 
-src/Project4Pendulum.i: src/Project4Pendulum.cpp.i
-.PHONY : src/Project4Pendulum.i
+src/CollisionChecking.i: src/CollisionChecking.cpp.i
+.PHONY : src/CollisionChecking.i
 
 # target to preprocess a source file
-src/Project4Pendulum.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pendulum_project.dir/build.make CMakeFiles/pendulum_project.dir/src/Project4Pendulum.cpp.i
-.PHONY : src/Project4Pendulum.cpp.i
+src/CollisionChecking.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/src/CollisionChecking.cpp.i
+.PHONY : src/CollisionChecking.cpp.i
 
-src/Project4Pendulum.s: src/Project4Pendulum.cpp.s
-.PHONY : src/Project4Pendulum.s
+src/CollisionChecking.s: src/CollisionChecking.cpp.s
+.PHONY : src/CollisionChecking.s
 
 # target to generate assembly for a file
-src/Project4Pendulum.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pendulum_project.dir/build.make CMakeFiles/pendulum_project.dir/src/Project4Pendulum.cpp.s
-.PHONY : src/Project4Pendulum.cpp.s
+src/CollisionChecking.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/src/CollisionChecking.cpp.s
+.PHONY : src/CollisionChecking.cpp.s
+
+src/Project4Car.o: src/Project4Car.cpp.o
+.PHONY : src/Project4Car.o
+
+# target to build an object file
+src/Project4Car.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/src/Project4Car.cpp.o
+.PHONY : src/Project4Car.cpp.o
+
+src/Project4Car.i: src/Project4Car.cpp.i
+.PHONY : src/Project4Car.i
+
+# target to preprocess a source file
+src/Project4Car.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/src/Project4Car.cpp.i
+.PHONY : src/Project4Car.cpp.i
+
+src/Project4Car.s: src/Project4Car.cpp.s
+.PHONY : src/Project4Car.s
+
+# target to generate assembly for a file
+src/Project4Car.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/src/Project4Car.cpp.s
+.PHONY : src/Project4Car.cpp.s
 
 src/RG-RRT.o: src/RG-RRT.cpp.o
 .PHONY : src/RG-RRT.o
 
 # target to build an object file
 src/RG-RRT.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pendulum_project.dir/build.make CMakeFiles/pendulum_project.dir/src/RG-RRT.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/src/RG-RRT.cpp.o
 .PHONY : src/RG-RRT.cpp.o
 
 src/RG-RRT.i: src/RG-RRT.cpp.i
@@ -166,7 +190,7 @@ src/RG-RRT.i: src/RG-RRT.cpp.i
 
 # target to preprocess a source file
 src/RG-RRT.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pendulum_project.dir/build.make CMakeFiles/pendulum_project.dir/src/RG-RRT.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/src/RG-RRT.cpp.i
 .PHONY : src/RG-RRT.cpp.i
 
 src/RG-RRT.s: src/RG-RRT.cpp.s
@@ -174,7 +198,7 @@ src/RG-RRT.s: src/RG-RRT.cpp.s
 
 # target to generate assembly for a file
 src/RG-RRT.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pendulum_project.dir/build.make CMakeFiles/pendulum_project.dir/src/RG-RRT.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/car_project.dir/build.make CMakeFiles/car_project.dir/src/RG-RRT.cpp.s
 .PHONY : src/RG-RRT.cpp.s
 
 # Help Target
@@ -185,10 +209,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... pendulum_project"
-	@echo "... src/Project4Pendulum.o"
-	@echo "... src/Project4Pendulum.i"
-	@echo "... src/Project4Pendulum.s"
+	@echo "... car_project"
+	@echo "... src/CollisionChecking.o"
+	@echo "... src/CollisionChecking.i"
+	@echo "... src/CollisionChecking.s"
+	@echo "... src/Project4Car.o"
+	@echo "... src/Project4Car.i"
+	@echo "... src/Project4Car.s"
 	@echo "... src/RG-RRT.o"
 	@echo "... src/RG-RRT.i"
 	@echo "... src/RG-RRT.s"

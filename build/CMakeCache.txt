@@ -14,6 +14,18 @@
 # EXTERNAL cache entries
 ########################
 
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=/opt/anaconda3/lib/cmake/Boost-1.82.0
+
+Boost_FILESYSTEM_LIBRARY_RELEASE:STRING=/opt/anaconda3/lib/libboost_filesystem.dylib
+
+//Path to a file.
+Boost_INCLUDE_DIR:PATH=/opt/anaconda3/include
+
+Boost_SERIALIZATION_LIBRARY_RELEASE:STRING=/opt/anaconda3/lib/libboost_serialization.dylib
+
+Boost_SYSTEM_LIBRARY_RELEASE:STRING=/opt/anaconda3/lib/libboost_system.dylib
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
 
@@ -237,6 +249,21 @@ PendulumPlanning_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 PendulumPlanning_SOURCE_DIR:STATIC=/Users/mihirprakash/Desktop/project4_src
 
+//The directory containing a CMake configuration file for boost_atomic.
+boost_atomic_DIR:PATH=/opt/anaconda3/lib/cmake/boost_atomic-1.82.0
+
+//The directory containing a CMake configuration file for boost_filesystem.
+boost_filesystem_DIR:PATH=/opt/anaconda3/lib/cmake/boost_filesystem-1.82.0
+
+//The directory containing a CMake configuration file for boost_headers.
+boost_headers_DIR:PATH=/opt/anaconda3/lib/cmake/boost_headers-1.82.0
+
+//The directory containing a CMake configuration file for boost_serialization.
+boost_serialization_DIR:PATH=/opt/anaconda3/lib/cmake/boost_serialization-1.82.0
+
+//The directory containing a CMake configuration file for boost_system.
+boost_system_DIR:PATH=/opt/anaconda3/lib/cmake/boost_system-1.82.0
+
 //The directory containing a CMake configuration file for ompl.
 ompl_DIR:PATH=/opt/homebrew/share/ompl/cmake
 
@@ -245,6 +272,8 @@ ompl_DIR:PATH=/opt/homebrew/share/ompl/cmake
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -256,7 +285,7 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=31
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -384,6 +413,18 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding Boost
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/opt/anaconda3/lib/cmake/Boost-1.82.0/BoostConfig.cmake][cfound components: serialization system filesystem ][v1.82.0()]
 //Details about finding ompl
 FIND_PACKAGE_MESSAGE_DETAILS_ompl:INTERNAL=[/opt/homebrew/include/ompl-1.6;/opt/homebrew/include;/opt/homebrew/include/eigen3;/opt/homebrew/Cellar/flann/1.9.2_1/include;/opt/homebrew/Cellar/ode/0.16.5_1/include][/opt/homebrew/lib;/opt/homebrew/Cellar/flann/1.9.2_1/lib;/opt/homebrew/Cellar/lz4/1.9.4/lib;-llz4;/opt/homebrew/Cellar/ode/0.16.5_1/lib][/opt/homebrew/lib/libompl.1.6.0.dylib;/opt/homebrew/lib/libboost_serialization-mt.dylib;/opt/homebrew/lib/libboost_filesystem-mt.dylib;/opt/homebrew/lib/libboost_system-mt.dylib;ode][v()]
+//ADVANCED property for variable: boost_atomic_DIR
+boost_atomic_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_filesystem_DIR
+boost_filesystem_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_headers_DIR
+boost_headers_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_serialization_DIR
+boost_serialization_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_system_DIR
+boost_system_DIR-ADVANCED:INTERNAL=1
 
